@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _chunk5J4B77VHcjs = require('./chunk-5J4B77VH.cjs');exports.installDeps = _chunk5J4B77VHcjs.a;
+//# sourceMappingURL=installDeps.cjs.map

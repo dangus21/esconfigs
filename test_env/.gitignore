@@ -1,0 +1,9 @@
+node_modules
+pnpm-lock.yaml
+tsconfig.*
+tailwind.*
+next.*
+.eslintrc.js
+.prettierrc
+.editorConfig
+biome.json
