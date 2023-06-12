@@ -130,14 +130,6 @@ module.exports = {
 		],
 		"no-use-before-define": "error",
 		"no-duplicate-imports": 2,
-		"sort-imports-es6-autofix/sort-imports-es6": [
-			2,
-			{
-				ignoreCase: false,
-				ignoreMemberSort: false,
-				memberSyntaxSortOrder: ["none", "all", "multiple", "single"]
-			}
-		],
 		"no-dupe-class-members": ["error"],
 		"import/no-extraneous-dependencies": [
 			"error",
