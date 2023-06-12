@@ -68,6 +68,11 @@ module.exports = {
 		"react/forbid-prop-types": 0,
 		"react/no-unescaped-entities": 0,
 		"react/function-component-definition": 0,
+		"jsx-a11y/accessible-emoji": 0,
+		"jsx-a11y/label-has-associated-control": [
+			"error",
+			{ assert: "either" }
+		],
 		"react/require-default-props": 0,
 		"react/jsx-filename-extension": [
 			1,
@@ -81,6 +86,7 @@ module.exports = {
 				allow: ["resolve", "reject", "done", "next", "err", "error"]
 			}
 		],
+		"jsx-a11y/href-no-hash": "off",
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"@typescript-eslint/comma-dangle": ["off"],
