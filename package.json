@@ -1,7 +1,7 @@
 {
-	"name": "@angusmiguel/es-configs",
+	"name": "eslint-config-angusmiguel",
 	"author": "angus <angusmiguel21@gmail.com> (https://github.com/dangus21)",
-	"version": "0.0.1",
+	"version": "1.0.13",
 	"description": "ESLint and Prettier Config",
 	"keywords": [
 		"javascript",
