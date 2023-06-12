@@ -46,12 +46,7 @@ module.exports = {
 				// destructuredArrayIgnorePattern: '^_',
 			}
 		],
-		"prefer-const": [
-			"error",
-			{
-				destructuring: "all"
-			}
-		],
+		"prefer-const": ["error", { destructuring: "all" }],
 		"arrow-body-style": [2, "as-needed"],
 		"no-unused-expressions": [
 			"error",
@@ -61,12 +56,7 @@ module.exports = {
 				allowTernary: true
 			}
 		],
-		"no-param-reassign": [
-			2,
-			{
-				props: false
-			}
-		],
+		"no-param-reassign": [2, { props: false }],
 		"no-console": 0,
 		"import/prefer-default-export": 0,
 		import: 0,
@@ -87,16 +77,12 @@ module.exports = {
 		"jsx-a11y/accessible-emoji": 0,
 		"jsx-a11y/label-has-associated-control": [
 			"error",
-			{
-				assert: "either"
-			}
+			{ assert: "either" }
 		],
 		"react/require-default-props": 0,
 		"react/jsx-filename-extension": [
 			1,
-			{
-				extensions: [".js", ".jsx", ".ts", ".tsx", ".mdx"]
-			}
+			{ extensions: [".js", ".jsx", ".ts", ".tsx", ".mdx"] }
 		],
 		radix: 0,
 		"no-shadow": [
@@ -107,12 +93,7 @@ module.exports = {
 			}
 		],
 		"jsx-a11y/href-no-hash": "off",
-		"jsx-a11y/anchor-is-valid": [
-			"warn",
-			{
-				aspects: ["invalidHref"]
-			}
-		],
+		"jsx-a11y/anchor-is-valid": ["warn", { aspects: ["invalidHref"] }],
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"@typescript-eslint/comma-dangle": ["off"],
@@ -156,9 +137,7 @@ module.exports = {
 				"@typescript-eslint/adjacent-overload-signatures": "off",
 				"@typescript-eslint/array-type": [
 					"error",
-					{
-						default: "array"
-					}
+					{ default: "array" }
 				],
 				"@typescript-eslint/ban-types": [
 					"error",
