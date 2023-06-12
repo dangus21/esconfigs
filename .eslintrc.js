@@ -19,6 +19,9 @@ module.exports = {
 		jest: true
 	},
 	rules: {
+		"jsx-a11y/no-static-element-interactions": 0,
+		"jsx-a11y/click-events-have-key-events": 0,
+		camelcase: 0,
 		"no-debugger": 0,
 		"import/no-cycle": "off",
 		"no-alert": 0,
