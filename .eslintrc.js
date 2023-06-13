@@ -11,7 +11,6 @@ module.exports = {
 		"eslint:recommended",
 		"prettier"
 	],
-	parser: "@babel/eslint-parser",
 	env: {
 		browser: true,
 		node: true,
@@ -124,6 +123,7 @@ module.exports = {
 			plugins: ["@typescript-eslint"],
 			rules: {
 				"no-unused-vars": "off",
+				"no-undef": "off",
 				"@typescript-eslint/no-unused-vars": [
 					2,
 					{ ignoreRestSiblings: true }
@@ -210,7 +210,6 @@ module.exports = {
 		"react-hooks",
 		"react",
 		"unused-imports",
-		"babel",
 		"sort-imports-es6-autofix",
 		"import",
 		"prettier"
