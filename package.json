@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-angusmiguel",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "",
 	"main": "index.js",
 	"files": [
@@ -29,5 +29,8 @@
 		"eslint": "^8.51.0",
 		"prettier-plugin-tailwindcss": "^0.5.6",
 		"prettier": "^3.0.3"
+	},
+	"engines": {
+		"node": ">= 18.0.0"
 	}
 }
