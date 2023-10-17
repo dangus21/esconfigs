@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-angusmiguel",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "",
 	"main": "index.js",
 	"files": [
@@ -9,7 +9,7 @@
 	],
 	"scripts": {
 		"pub": "pnpm version patch --force && git add . && git commit -m \"Bump version\" && git push && npm publish --access public",
-		"np": "pnpm comp && git add . && git commit -m \"Bump version\" && npx np",
+		"np": "git add . && git commit -m \"Bump version\" && npx np",
 		"test": ""
 	},
 	"keywords": [],
