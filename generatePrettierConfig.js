@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const targetPath = path.resolve(__dirname, "../..");
+const targetPath = path.resolve(__dirname.split("node_modules")[0]);
 
 if (!fs.existsSync(targetPath)) {
 	fs.copyFileSync(
