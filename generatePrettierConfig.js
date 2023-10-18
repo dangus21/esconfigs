@@ -4,9 +4,7 @@ const path = require("path");
 
 const targetPath = path.resolve(__dirname.split("node_modules")[0]);
 
-if (!fs.existsSync(targetPath)) {
-	fs.copyFileSync(
-		path.resolve(__dirname, "prettierrc.js"),
-		targetPath + "/prettierrc.js"
-	);
-}
+fs.copyFileSync(
+	path.resolve(__dirname, "./prettierrc.js"),
+	path.resolve(targetPath, "prettierrc.js")
+);
