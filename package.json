@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"files": [
-		"./index.js",
+		".eslintrc.js",
 		"prettierrc.js",
+		"./index.js",
 		"./generatePrettierConfig.js"
 	],
 	"bin": {
