@@ -1,12 +1,15 @@
 {
 	"name": "eslint-config-angusmiguel",
-	"version": "0.1.0",
+	"version": "0.1.3",
 	"description": "",
 	"main": "index.js",
 	"files": [
 		"./index.js",
 		"./generatePrettierConfig.js"
 	],
+	"bin": {
+		"prettier": "./generatePrettierConfig.js"
+	},
 	"scripts": {
 		"pub": "pnpm version patch --force && git add . && git commit -m \"Bump version\" && git push && npm publish --access public",
 		"np": "git add . && git commit -m \"Bump version\" && npx np",
