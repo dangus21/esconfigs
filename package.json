@@ -5,13 +5,14 @@
 	"main": "index.js",
 	"files": [
 		"./index.js",
+		"prettierrc.js",
 		"./generatePrettierConfig.js"
 	],
 	"bin": {
 		"prettier": "./generatePrettierConfig.js"
 	},
 	"scripts": {
-		"pub": "pnpm version patch --force && git add . && git commit -m \"Bump version\" && git push && npm publish --access public",
+		"pub": "pnpm version patch --force && pnpm publish --access public",
 		"np": "git add . && git commit -m \"Bump version\" && npx np",
 		"test": ""
 	},
