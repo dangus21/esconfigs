@@ -13,9 +13,7 @@
 		"prettier": "./generatePrettierConfig.js"
 	},
 	"scripts": {
-		"pub": "pnpm version patch --force && pnpm publish --access public",
-		"np": "git add . && git commit -m \"Bump version\" && npx np",
-		"test": ""
+		"pub": "pnpm version patch --force && pnpm publish --access public && git push -f"
 	},
 	"keywords": [],
 	"author": "",
