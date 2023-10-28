@@ -1,16 +1,18 @@
 {
 	"name": "eslint-config-angusmiguel",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"description": "",
 	"main": "index.js",
 	"files": [
 		".eslintrc.js",
 		".prettierrc",
 		"./index.js",
-		"./generatePrettierConfig.js"
+		"./generatePrettierConfig.js",
+		"./generateEslintConfig.js"
 	],
 	"bin": {
-		"prettier": "./generatePrettierConfig.js"
+		"prettier": "./generatePrettierConfig.js",
+		"eslint": "./generateEslintConfig.js"
 	},
 	"scripts": {
 		"pub": "pnpm version patch --force && pnpm publish --access public && git push -f"
