@@ -4,9 +4,11 @@ const path = require("path");
 const prompts = require("prompts");
 
 function copyConfig(configName) {
+	const configFileName =
+		configName === "eslint" ? `./${configName}.js` : `.${configName}`;
 	fs.copyFileSync(
-		path.resolve(__dirname, `./${configName}.js`),
-		path.resolve(process.cwd(), `${configName}.js`)
+		path.resolve(__dirname, configFileName),
+		path.resolve(process.cwd(), configFileName)
 	);
 }
 
