@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-angusmiguel",
-	"version": "0.1.16",
+	"version": "0.1.17",
 	"description": "",
 	"main": "index.js",
 	"files": [
