@@ -7,12 +7,10 @@
 		".eslintrc.js",
 		".prettierrc",
 		"./index.js",
-		"./generatePrettierConfig.js",
-		"./generateEslintConfig.js"
+		"./generateConfig.js"
 	],
 	"bin": {
-		"prettier": "./generatePrettierConfig.js",
-		"eslint": "./generateEslintConfig.js"
+		"config": "./generateConfig.js"
 	},
 	"scripts": {
 		"pub": "pnpm version patch --force && pnpm publish --access public && git push -f"
