@@ -5,7 +5,7 @@ const prompts = require("prompts");
 
 function copyConfig(configName) {
 	const configFileName =
-		configName === "eslint" ? `./${configName}.js` : `.${configName}`;
+		configName === "eslint" ? `./${configName}rc.js` : `.${configName}rc`;
 	fs.copyFileSync(
 		path.resolve(__dirname, configFileName),
 		path.resolve(process.cwd(), configFileName)
