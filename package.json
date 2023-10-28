@@ -1,6 +1,6 @@
 {
-	"name": "eslint-config-angusmiguel",
-	"version": "2.0.0",
+	"name": "eslint-config-esconfigs",
+	"version": "3.1.0",
 	"description": "",
 	"main": "index.js",
 	"files": [
@@ -13,7 +13,9 @@
 		"config": "./generateConfig.js"
 	},
 	"scripts": {
-		"pub": "pnpm version patch --force && pnpm publish --access public && git push -f"
+		"patch": "pnpm version patch --force && pnpm publish --access public && git push -f",
+		"minor": "pnpm version minor --force && pnpm publish --access public && git push -f",
+		"major": "pnpm version major --force && pnpm publish --access public && git push -f"
 	},
 	"keywords": [],
 	"author": "",
@@ -35,5 +37,9 @@
 	},
 	"engines": {
 		"node": ">= 18.0.0"
-	}
+	},
+	"bugs": {
+		"url": "https://github.com/dangus21/eslint-config-angusmiguel/issues"
+	},
+	"homepage": "https://github.com/dangus21/eslint-config-angusmiguel#readme"
 }
