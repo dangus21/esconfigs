@@ -2,10 +2,14 @@
 const fs = require("fs");
 const path = require("path");
 const prompts = require("prompts");
+const { installDeps } = require("./installDeps");
 
 function copyConfig(configName) {
 	const configFileName =
 		configName === "eslint" ? `./.${configName}rc.js` : `.${configName}rc`;
+	if (configFileName === "eslint") {
+		installDeps();
+	}
 	fs.copyFileSync(
 		path.resolve(__dirname, configFileName),
 		path.resolve(process.cwd(), configFileName)
