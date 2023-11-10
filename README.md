@@ -1,17 +1,17 @@
-### ESLint-config-ESConfigs
+### @angusmiguel/esconfigs
 
 Personal config rules for eslint and prettier.
 
-For prettier do:
+For eslint do:
 
 ```js 
 extends: ["esconfigs/eslint"]
 ```
 
-For prettier, generate a new config with:
+For prettier generate a new config with:
 
 ```shell
-npx eslint-config-esconfigs
+npx @angusmiguel/esconfigs
 ```
 
 This also gives you the option to copy over a new eslint config to your project.
