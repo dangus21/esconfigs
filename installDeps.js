@@ -26,8 +26,9 @@ const eslintDeps = [
 /**
  * @param {import("./types").PackageManager} manager
  * @param {import("./types").ConfigOptions[]} config
+ * @param {boolean} withTailwind
  */
-function installDeps(manager, config) {
+function installDeps(manager, config, withTailwind) {
 	const currDirFiles = fs.readdirSync(path);
 	/** @type {import("./types").PackageManager} */
 	let currDirPackageManager = null;
@@ -62,11 +63,12 @@ function installDeps(manager, config) {
 
 	const packages = String(
 		[
-			...(config.includes("prettier") ? prettierDeps : []),
+			...(withTailwind && config.includes("prettier")
+				? prettierDeps
+				: []),
 			...(config.includes("eslint") ? eslintDeps : [])
 		].join(" ")
 	);
-	console.log("LOG ~ file: installDeps.js:74 ~ packages:", packages);
 
 	spawnSync(
 		currDirPackageManager,

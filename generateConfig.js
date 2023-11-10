@@ -5,18 +5,34 @@ const prompts = require("prompts");
 const { installDeps } = require("./installDeps");
 
 const configOptions = {
-	eslint: /** @type {const} */ (".eslintrc.js"),
-	prettier: /** @type {const} */ (".prettierrc")
+	eslint: /** @type {const} */ (["./eslint/index.js", ".eslintrc.js"]),
+	prettier: /** @type {const} */ (["./prettier/.prettierrc", ".prettierrc"])
 };
 
 /**
- * @param {import("./types").ConfigOptions} configName
+ * @type {import("./types").BuildDestinationFileName}
  */
-function copyConfig(configName) {
-	const configFileName = configOptions[configName];
+function buildDestinationFileName(configName, withTailwind) {
+	if (configName === "prettier" && withTailwind) {
+		return ["./prettier/.prettierrc-tw", ".prettierrc"];
+	} else {
+		return configOptions[configName];
+	}
+}
+
+/**
+ * @param {import("./types").ConfigOptions} configName
+ * @param {boolean} withTailwind
+ */
+function copyConfig(configName, withTailwind) {
+	const [ogFile, fileName] = buildDestinationFileName(
+		configName,
+		withTailwind
+	);
+
 	fs.copyFileSync(
-		path.resolve(__dirname, configFileName),
-		path.resolve(process.cwd(), configFileName)
+		path.resolve(__dirname, ogFile),
+		path.resolve(process.cwd(), fileName)
 	);
 }
 
@@ -38,7 +54,15 @@ function copyConfig(configName) {
 					title: "Prettier",
 					value: "prettier"
 				}
-			]
+			],
+			min: 1,
+			max: 2
+		},
+		{
+			name: "withTailwind",
+			message: "Are you using tailwind?",
+			type: "confirm",
+			initial: true
 		},
 		{
 			name: "packageManager",
@@ -61,7 +85,8 @@ function copyConfig(configName) {
 					title: "Pnpm",
 					value: "pnpm"
 				}
-			]
+			],
+			validate: (option) => (!option ? "Select an option" : true)
 		}
 	]);
 
@@ -70,7 +95,11 @@ function copyConfig(configName) {
 	}
 
 	for (const config of response.configType) {
-		copyConfig(config);
+		copyConfig(config, response.withTailwind);
 	}
-	installDeps(response.packageManager, response.configType);
+	installDeps(
+		response.packageManager,
+		response.configType,
+		response.withTailwind
+	);
 })();

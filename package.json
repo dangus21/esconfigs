@@ -5,12 +5,11 @@
 	"main": "index.js",
 	"types": "types.d.ts",
 	"files": [
-		".prettierrc",
-		".eslintrc.js",
 		"./index.js",
 		"./installDeps.js",
 		"./generateConfig.js",
-		"./eslint/index.js"
+		"./eslint",
+		"./prettier"
 	],
 	"bin": {
 		"config": "./generateConfig.js"
