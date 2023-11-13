@@ -5,7 +5,7 @@ const prompts = require("prompts");
 const { installDeps } = require("./installDeps");
 
 const configOptions = {
-	eslint: /** @type {const} */ (["./eslint/index.js", ".eslintrc.js"]),
+	eslint: /** @type {const} */ ([".eslintrc.js", ".eslintrc.js"]),
 	prettier: /** @type {const} */ (["./prettier/.prettierrc", ".prettierrc"])
 };
 

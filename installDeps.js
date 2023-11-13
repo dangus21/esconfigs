@@ -23,6 +23,12 @@ const eslintDeps = [
 	"prettier"
 ];
 
+const PACKAGES = {
+	pnpm: "pnpm",
+	yarn: "yarn",
+	npm: "package-lock"
+};
+
 /**
  * @param {import("./types").PackageManager} manager
  * @param {import("./types").ConfigOptions[]} config
@@ -31,34 +37,35 @@ const eslintDeps = [
 function installDeps(manager, config, withTailwind) {
 	const currDirFiles = fs.readdirSync(path);
 	/** @type {import("./types").PackageManager} */
-	let currDirPackageManager = null;
+	let currDirPackageManager = manager;
+
 	if (
 		currDirFiles.length === 0 ||
 		(currDirFiles.length > 0 && !currDirFiles.includes("package.json"))
 	) {
 		currDirPackageManager = "npm";
-		spawnSync(currDirPackageManager, ["init"], spawnOptions);
-	} else {
-		if (manager === "current") {
-			for (const file of currDirFiles) {
-				switch (file) {
-					case packages.pnpm:
-						currDirPackageManager = "pnpm";
-						break;
-					case packages.yarn:
-						currDirPackageManager = "yarn";
-						break;
-					case packages.npm:
-						currDirPackageManager = "npm";
-						break;
-					default:
-						currDirPackageManager = "pnpm";
-						break;
-				}
+		spawnSync(currDirPackageManager, ["init", "-y"], spawnOptions);
+	}
+
+	if (manager === "current") {
+		for (const file of currDirFiles) {
+			switch (true) {
+				case file.startsWith(PACKAGES.pnpm):
+					currDirPackageManager = "pnpm";
+					break;
+				case file.startsWith(PACKAGES.yarn):
+					currDirPackageManager = "yarn";
+					break;
+				case file.startsWith(PACKAGES.npm):
+					currDirPackageManager = "npm";
+					break;
+				default:
+					currDirPackageManager = "pnpm";
+					break;
 			}
-		} else {
-			currDirPackageManager = manager;
 		}
+	} else {
+		currDirPackageManager = manager;
 	}
 
 	const packages = String(
