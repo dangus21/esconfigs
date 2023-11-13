@@ -1,6 +1,6 @@
 {
 	"name": "@angusmiguel/esconfigs",
-	"version": "5.0.0",
+	"version": "5.1.0",
 	"description": "",
 	"main": "index.js",
 	"types": "types.d.ts",
@@ -19,8 +19,7 @@
 		"pp": "pnpm version patch --force && pnpm publish --access public && git push -f",
 		"pm": "pnpm version minor --force && pnpm publish --access public && git push -f",
 		"pmm": "pnpm version major --force && pnpm publish --access public && git push -f",
-		"test_env": "mkdir testEnvDir && cd testEnvDir",
-		"del": "rimraf testEnvDir",
+		"del": "rimraf testEnv",
 		"del_curr": "rimraf ./"
 	},
 	"keywords": [],
