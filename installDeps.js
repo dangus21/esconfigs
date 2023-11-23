@@ -9,7 +9,6 @@ const spawnOptions = {
 	shell: true
 };
 
-const prettierDeps = ["prettier-plugin-tailwindcss"];
 const eslintDeps = [
 	"@typescript-eslint/eslint-plugin",
 	"@typescript-eslint/parser",
@@ -19,8 +18,7 @@ const eslintDeps = [
 	"eslint-plugin-react",
 	"eslint-plugin-react-hooks",
 	"eslint-plugin-sort-imports-es6-autofix",
-	"eslint-plugin-unused-imports",
-	"prettier"
+	"eslint-plugin-unused-imports"
 ];
 
 const PACKAGES = {
@@ -71,8 +69,8 @@ function installDeps(manager, config, withTailwind) {
 	const packages = String(
 		[
 			...(withTailwind && config.includes("prettier")
-				? prettierDeps
-				: []),
+				? ["prettier", "prettier-plugin-tailwindcss"]
+				: ["prettier"]),
 			...(config.includes("eslint") ? eslintDeps : [])
 		].join(" ")
 	);
