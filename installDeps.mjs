@@ -1,5 +1,5 @@
-const { spawnSync } = require("child_process");
-const fs = require("fs");
+import { spawnSync } from "child_process";
+import fs from "fs";
 
 const path = process.cwd();
 const spawnOptions = {
@@ -32,7 +32,7 @@ const PACKAGES = {
  * @param {import("./types").ConfigOptions[]} config
  * @param {boolean} withTailwind
  */
-function installDeps(manager, config, withTailwind) {
+function installDeps(manager, config, withTailwind = false) {
 	const currDirFiles = fs.readdirSync(path);
 	/** @type {import("./types").PackageManager} */
 	let currDirPackageManager = manager;
@@ -68,9 +68,11 @@ function installDeps(manager, config, withTailwind) {
 
 	const packages = String(
 		[
-			...(withTailwind && config.includes("prettier")
-				? ["prettier", "prettier-plugin-tailwindcss"]
-				: ["prettier"]),
+			...(config.includes("prettier")
+				? withTailwind
+					? ["prettier", "prettier-plugin-tailwindcss"]
+					: ["prettier"]
+				: []),
 			...(config.includes("eslint") ? eslintDeps : [])
 		].join(" ")
 	);
@@ -82,4 +84,4 @@ function installDeps(manager, config, withTailwind) {
 	);
 }
 
-module.exports = { installDeps };
+export { installDeps };
