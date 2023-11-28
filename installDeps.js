@@ -1,5 +1,5 @@
-import { spawnSync } from "child_process";
-import fs from "fs";
+const fs = require("fs");
+const { spawnSync } = require("child_process");
 
 const path = process.cwd();
 const spawnOptions = {
@@ -84,4 +84,4 @@ function installDeps(manager, config, withTailwind = false) {
 	);
 }
 
-export { installDeps };
+module.exports = { installDeps };
