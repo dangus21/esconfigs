@@ -1,6 +1,6 @@
 {
 	"name": "@angusmiguel/esconfigs",
-	"version": "6.0.0",
+	"version": "6.0.1",
 	"description": "",
 	"main": "index.mjs",
 	"types": "types.d.ts",
@@ -8,7 +8,7 @@
 		"./index.mjs",
 		"./installDeps.mjs",
 		"./generateConfig.mjs",
-		"./eslint",
+		"./eslintrc.js",
 		"./prettier"
 	],
 	"bin": {
