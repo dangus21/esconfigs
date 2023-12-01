@@ -1,6 +1,6 @@
 {
 	"name": "@angusmiguel/esconfigs",
-	"version": "6.0.4",
+	"version": "6.0.5",
 	"description": "",
 	"main": "index.js",
 	"types": "types.d.ts",

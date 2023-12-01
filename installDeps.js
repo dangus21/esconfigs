@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require("fs");
 const { spawnSync } = require("child_process");
 
@@ -21,6 +22,8 @@ const eslintDeps = [
 	"eslint-plugin-react",
 	"eslint-plugin-sort-imports-es6-autofix",
 	"eslint-plugin-unused-imports",
+	"@typescript-eslint/parser",
+	"@typescript-eslint/eslint-plugin",
 	"eslint"
 ];
 
