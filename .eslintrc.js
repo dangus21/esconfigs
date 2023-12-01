@@ -10,7 +10,12 @@ module.exports = {
 		"unused-imports",
 		"sort-imports-es6-autofix",
 		"import",
-		"@typescript-eslint"
+		"@typescript-eslint",
+		"html",
+		"react",
+		"react-hooks",
+		"babel",
+		"prettier"
 	],
 	rules: {
 		"@typescript-eslint/no-unused-vars": [2, { ignoreRestSiblings: true }],

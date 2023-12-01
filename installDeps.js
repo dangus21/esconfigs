@@ -12,13 +12,16 @@ const spawnOptions = {
 const eslintDeps = [
 	"@typescript-eslint/eslint-plugin",
 	"@typescript-eslint/parser",
-	"eslint",
+	"eslint-import-resolver-typescript",
 	"eslint-plugin-babel",
+	"eslint-plugin-html",
 	"eslint-plugin-import",
-	"eslint-plugin-react",
+	"eslint-plugin-prettier",
 	"eslint-plugin-react-hooks",
+	"eslint-plugin-react",
 	"eslint-plugin-sort-imports-es6-autofix",
-	"eslint-plugin-unused-imports"
+	"eslint-plugin-unused-imports",
+	"eslint"
 ];
 
 const PACKAGES = {
