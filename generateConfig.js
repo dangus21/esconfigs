@@ -8,7 +8,8 @@ const { prompt } = require("enquirer");
 
 const configOptions = {
 	eslint: /** @type {const} */ (["./.eslintrc.js", ".eslintrc.js"]),
-	prettier: /** @type {const} */ (["./prettier/.prettierrc", ".prettierrc"])
+	prettier: /** @type {const} */ (["./prettier/.prettierrc", ".prettierrc"]),
+	biomejs: /** @type {const} */ (["./biome.json", "biome.json"])
 };
 
 /**
@@ -47,7 +48,7 @@ function copyConfig(configName, withTailwind) {
 			name: "configType",
 			message: "What configs do you want to copy over?",
 			type: "multiselect",
-			choices: ["ESlint", "Prettier"],
+			choices: ["ESlint", "Prettier", "BiomeJS"],
 			min: 1,
 			max: 2
 		},
@@ -90,6 +91,7 @@ function copyConfig(configName, withTailwind) {
 	for (const config of answers.configType) {
 		copyConfig(config.toLowerCase(), answers.withTailwind);
 	}
+
 	installDeps(
 		answers.packageManager,
 		answers.configType,
