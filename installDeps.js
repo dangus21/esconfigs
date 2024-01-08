@@ -79,7 +79,8 @@ function installDeps(manager, config, withTailwind = false) {
 					? ["prettier", "prettier-plugin-tailwindcss"]
 					: ["prettier"]
 				: []),
-			...(config.includes("eslint") ? eslintDeps : [])
+			...(config.includes("eslint") ? eslintDeps : []),
+			...(config.includes("biomejs") ? "@biomejs/biome@latest" : [])
 		].join(" ")
 	);
 

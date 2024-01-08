@@ -1,4 +1,4 @@
-export type ConfigOptions = "eslint" | "prettier";
+export type ConfigOptions = "eslint" | "prettier" | "biomejs";
 export type PackageManager = "npm" | "yarn" | "pnpm" | "current" | null;
 export type Prompt = {
 	configType: [ConfigOptions];
