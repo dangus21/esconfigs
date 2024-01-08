@@ -9,7 +9,7 @@ const { MultiSelect, Confirm, Select } = require("enquirer");
 const configOptions = {
 	eslint: /** @type {const} */ (["./.eslintrc.js", ".eslintrc.js"]),
 	prettier: /** @type {const} */ (["./prettier/.prettierrc", ".prettierrc"]),
-	biomejs: /** @type {const} */ (["./biome.json", "biome.json"])
+	biomejs: /** @type {const} */ (["./biome.json", "biome.json"]),
 };
 
 /**
@@ -18,9 +18,8 @@ const configOptions = {
 function buildDestinationFileName(configName, withTailwind) {
 	if (configName === "prettier" && withTailwind) {
 		return ["./prettier/.prettierrc-tw", ".prettierrc"];
-	} else {
-		return configOptions[configName];
 	}
+	return configOptions[configName];
 }
 
 /**
@@ -30,25 +29,25 @@ function buildDestinationFileName(configName, withTailwind) {
 function copyConfig(configName, withTailwind) {
 	const [ogFile, fileName] = buildDestinationFileName(
 		configName,
-		withTailwind
+		withTailwind,
 	);
 
 	fs.copyFileSync(
 		path.resolve(__dirname, ogFile),
-		path.resolve(process.cwd(), fileName)
+		path.resolve(process.cwd(), fileName),
 	);
 }
 
-(async function () {
+(async () => {
 	const configType = await new MultiSelect({
 		name: "configType",
 		message: "What configs do you want to copy over?",
 		choices: [
 			{ name: "ESlint", value: "eslint" },
 			{ name: "Prettier", value: "prettier" },
-			{ name: "BiomeJS", value: "biomejs" }
+			{ name: "BiomeJS", value: "biomejs" },
 		],
-		limit: 3
+		limit: 3,
 	})
 		.run()
 		.then((ans) => ans.map((res) => res.toLowerCase()))
@@ -58,7 +57,7 @@ function copyConfig(configName, withTailwind) {
 		name: "withTailwind",
 		message: "Are you using tailwind?",
 		type: "confirm",
-		initial: true
+		initial: true,
 	});
 
 	if (configType.includes("tailwind")) {
@@ -75,22 +74,22 @@ function copyConfig(configName, withTailwind) {
 		choices: [
 			{
 				title: "Current",
-				value: "current"
+				value: "current",
 			},
 			{
 				title: "Npm",
-				value: "npm"
+				value: "npm",
 			},
 			{
 				title: "Yarn",
-				value: "yarn"
+				value: "yarn",
 			},
 			{
 				title: "Pnpm",
-				value: "pnpm"
-			}
+				value: "pnpm",
+			},
 		],
-		validate: (option) => (!option ? "Select an option" : true)
+		validate: (option) => (!option ? "Select an option" : true),
 	})
 		.run()
 		.then((ans) => ans.toLowerCase())

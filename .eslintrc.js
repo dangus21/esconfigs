@@ -2,18 +2,18 @@ module.exports = {
 	env: {
 		browser: true,
 		node: true,
-		es2021: true
+		es2021: true,
 	},
 	extends: [
 		"plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
-		"plugin:@typescript-eslint/recommended" // Uses the recommended rules from @typescript-eslint/eslint-plugin
+		"plugin:@typescript-eslint/recommended", // Uses the recommended rules from @typescript-eslint/eslint-plugin
 	],
 	parser: "@typescript-eslint/parser",
 	plugins: [
 		"unused-imports",
 		"sort-imports-es6-autofix",
 		"import",
-		"@typescript-eslint"
+		"@typescript-eslint",
 	],
 	rules: {
 		"react/react-in-jsx-scope": 0,
@@ -25,17 +25,17 @@ module.exports = {
 				format: ["PascalCase"],
 				custom: {
 					regex: "^I[A-Z]",
-					match: false
-				}
-			}
-		]
+					match: false,
+				},
+			},
+		],
 	},
 	settings: {
 		react: {
-			version: "detect"
+			version: "detect",
 		},
 		"import/resolver": {
-			typescript: {} // this loads <rootdir>/tsconfig.json to eslint
-		}
-	}
+			typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
+		},
+	},
 };

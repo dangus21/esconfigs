@@ -7,7 +7,7 @@ const spawnOptions = {
 	cwd: path,
 	stdio: "inherit",
 	env: process.env,
-	shell: true
+	shell: true,
 };
 
 const eslintDeps = [
@@ -24,13 +24,13 @@ const eslintDeps = [
 	"eslint-plugin-unused-imports",
 	"@typescript-eslint/parser",
 	"@typescript-eslint/eslint-plugin",
-	"eslint"
+	"eslint",
 ];
 
 const PACKAGES = {
 	pnpm: "pnpm",
 	yarn: "yarn",
-	npm: "package-lock"
+	npm: "package-lock",
 };
 
 /**
@@ -80,14 +80,14 @@ function installDeps(manager, config, withTailwind = false) {
 					: ["prettier"]
 				: []),
 			...(config.includes("eslint") ? eslintDeps : []),
-			...(config.includes("biomejs") ? ["@biomejs/biome@latest"] : [])
-		].join(" ")
+			...(config.includes("biomejs") ? ["@biomejs/biome@latest"] : []),
+		].join(" "),
 	);
 
 	spawnSync(
 		currDirPackageManager,
 		[currDirPackageManager === "yarn" ? "add" : "install", packages],
-		spawnOptions
+		spawnOptions,
 	);
 }
 
