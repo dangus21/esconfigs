@@ -80,7 +80,7 @@ function installDeps(manager, config, withTailwind = false) {
 					: ["prettier"]
 				: []),
 			...(config.includes("eslint") ? eslintDeps : []),
-			...(config.includes("biomejs") ? "@biomejs/biome@latest" : [])
+			...(config.includes("biomejs") ? ["@biomejs/biome@latest"] : [])
 		].join(" ")
 	);
 

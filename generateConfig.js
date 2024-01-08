@@ -4,7 +4,7 @@ const path = require("path");
 
 const { installDeps } = require("./installDeps");
 
-const { prompt } = require("enquirer");
+const { MultiSelect, Confirm, Select } = require("enquirer");
 
 const configOptions = {
 	eslint: /** @type {const} */ (["./.eslintrc.js", ".eslintrc.js"]),
@@ -40,61 +40,69 @@ function copyConfig(configName, withTailwind) {
 }
 
 (async function () {
-	/**
-	 * @type {import("./types").Prompt}
-	 */
-	const answers = await prompt([
-		{
-			name: "configType",
-			message: "What configs do you want to copy over?",
-			type: "multiselect",
-			choices: ["ESlint", "Prettier", "BiomeJS"],
-			min: 1,
-			max: 2
-		},
-		{
-			name: "withTailwind",
-			message: "Are you using tailwind?",
-			type: "confirm",
-			initial: true,
-			when: (answers) => answers.configType.includes("prettier")
-		},
-		{
-			name: "packageManager",
-			message: "What package manager that you have do you prefer?",
-			type: "select",
-			choices: [
-				{
-					title: "From working directory",
-					value: "current"
-				},
-				{
-					title: "Npm",
-					value: "npm"
-				},
-				{
-					title: "Yarn",
-					value: "yarn"
-				},
-				{
-					title: "Pnpm",
-					value: "pnpm"
-				}
-			],
-			validate: (option) => (!option ? "Select an option" : true)
-		}
-	]);
-	if (answers.configType.length === 0 || !answers.packageManager) {
+	const configType = await new MultiSelect({
+		name: "configType",
+		message: "What configs do you want to copy over?",
+		choices: [
+			{ name: "ESlint", value: "eslint" },
+			{ name: "Prettier", value: "prettier" },
+			{ name: "BiomeJS", value: "biomejs" }
+		],
+		limit: 3
+	})
+		.run()
+		.then((ans) => ans.map((res) => res.toLowerCase()))
+		.catch(console.error);
+
+	const withTailwind = new Confirm({
+		name: "withTailwind",
+		message: "Are you using tailwind?",
+		type: "confirm",
+		initial: true
+	});
+
+	if (configType.includes("tailwind")) {
+		tailwind
+			.run()
+			.then((ans) => ans.toLowerCase())
+			.catch(console.error);
+	}
+
+	const packageManager = await new Select({
+		name: "packageManager",
+		message: "What package manager that you have do you prefer?",
+		type: "select",
+		choices: [
+			{
+				title: "Current",
+				value: "current"
+			},
+			{
+				title: "Npm",
+				value: "npm"
+			},
+			{
+				title: "Yarn",
+				value: "yarn"
+			},
+			{
+				title: "Pnpm",
+				value: "pnpm"
+			}
+		],
+		validate: (option) => (!option ? "Select an option" : true)
+	})
+		.run()
+		.then((ans) => ans.toLowerCase())
+		.catch(console.error);
+
+	if (configType.length === 0 || !packageManager) {
 		return;
 	}
 
-	for (const config of answers.configType) {
-		copyConfig(config.toLowerCase(), answers.withTailwind);
+	for (const config of configType) {
+		copyConfig(config, withTailwind);
 	}
 
-	installDeps(
-		answers.packageManager,
-		answers.configType,
-		answers.withTailwind
-	);
+	installDeps(packageManager, configType, withTailwind);
 })();
