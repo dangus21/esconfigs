@@ -8,11 +8,30 @@
 		"rules": {
 			"recommended": true,
 			"style": {
-				"noNonNullAssertion": "off"
+				"noNonNullAssertion": "off",
+				"useFragmentSyntax": "error",
+				"useTemplate": "error",
+				"noUselessElse": "error"
 			},
 			"nursery": {
-				"noUnusedImports": "error"
-			}
+				"noUnusedImports": "error",
+				"useAwait": "error"
+			},
+			"correctness": {
+				"noUnusedVariables": "error",
+				"useExhaustiveDependencies": "error"
+			},
+			"suspicious": {
+				"recommended": true
+			},
+			"a11y": {
+				"recommended": true
+			},
+			"complexity": {
+				"recommended": true
+			},
+			"security": {},
+			"performance": {}
 		}
 	},
 	"formatter": {
@@ -23,10 +42,7 @@
 		"lineWidth": 80,
 		"lineEnding": "lf",
 		"ignore": [
-			"node_modules",
-			"public",
-			".next",
-			".vercel"
+			"node_modules"
 		]
 	},
 	"javascript": {
@@ -41,7 +57,18 @@
 			"bracketSameLine": false,
 			"indentWidth": 4,
 			"indentStyle": "tab",
-			"quoteStyle": "double"
+			"quoteStyle": "double",
+			"lineEnding": "lf",
+			"lineWidth": 80
 		}
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git"
+	},
+	"files": {
+		"ignore": [
+			"./src/routeTree.gen.ts"
+		]
 	}
 }
