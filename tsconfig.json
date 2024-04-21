@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"strict": true,
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"outDir": "./dist",
+		"noImplicitAny": false,
+		"resolveJsonModule": true,
+	},
+	"include": [
+		"**/*.ts",
+	],
+	"exclude": [
+		"supabase",
+		"node_modules"
+	]
+}

@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require("fs");
-const { spawnSync } = require("child_process");
+import { readdirSync } from "fs";
+import { SpawnSyncOptionsWithBufferEncoding, spawnSync } from "child_process";
+import { ConfigOption, PackageManager } from "./";
 
 const path = process.cwd();
 const spawnOptions = {
@@ -8,7 +8,8 @@ const spawnOptions = {
 	stdio: "inherit",
 	env: process.env,
 	shell: true,
-};
+	encoding: "buffer"
+} as SpawnSyncOptionsWithBufferEncoding;
 
 const eslintDeps = [
 	"@typescript-eslint/eslint-plugin",
@@ -22,8 +23,6 @@ const eslintDeps = [
 	"eslint-plugin-react",
 	"eslint-plugin-sort-imports-es6-autofix",
 	"eslint-plugin-unused-imports",
-	"@typescript-eslint/parser",
-	"@typescript-eslint/eslint-plugin",
 	"eslint",
 ];
 
@@ -33,14 +32,8 @@ const PACKAGES = {
 	npm: "package-lock",
 };
 
-/**
- * @param {import("./types").PackageManager} manager
- * @param {import("./types").ConfigOptions[]} config
- * @param {boolean} withTailwind
- */
-function installDeps(manager, config, withTailwind = false) {
-	const currDirFiles = fs.readdirSync(path);
-	/** @type {import("./types").PackageManager} */
+function installDeps(manager: NonNullable<PackageManager>, config: ConfigOption[], withTailwind = false) {
+	const currDirFiles = readdirSync(path);
 	let currDirPackageManager = manager;
 
 	if (
@@ -71,6 +64,7 @@ function installDeps(manager, config, withTailwind = false) {
 	} else {
 		currDirPackageManager = manager;
 	}
+	console.log('LOG ~ currDirPackageManager:', currDirPackageManager);
 
 	const packages = String(
 		[
@@ -84,11 +78,11 @@ function installDeps(manager, config, withTailwind = false) {
 		].join(" "),
 	);
 
-	spawnSync(
-		currDirPackageManager,
-		[currDirPackageManager === "yarn" ? "add" : "install", packages],
-		spawnOptions,
-	);
+	// spawnSync(
+	// 	currDirPackageManager,
+	// 	[currDirPackageManager === "yarn" ? "add" : "install", packages],
+	// 	spawnOptions,
+	// );
 }
 
-module.exports = { installDeps };
+export { installDeps };
