@@ -277,7 +277,7 @@ function copyConfig(configName, withTailwind) {
     withTailwind
   );
   (0, import_fs2.writeFileSync)(
-    import_path.default.resolve(process.cwd(), "test", fileName),
+    import_path.default.resolve(process.cwd(), fileName),
     ogFile
   );
 }

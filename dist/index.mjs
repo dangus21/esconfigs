@@ -251,7 +251,7 @@ function copyConfig(configName, withTailwind) {
     withTailwind
   );
   writeFileSync(
-    path2.resolve(process.cwd(), "test", fileName),
+    path2.resolve(process.cwd(), fileName),
     ogFile
   );
 }
