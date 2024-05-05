@@ -1,6 +1,6 @@
 {
 	"name": "@angusmiguel/esconfigs",
-	"version": "7.0.0",
+	"version": "7.0.1",
 	"description": "Generate linting configs for js",
 	"main": "./dist/index.js",
 	"types": "./dist/types.d.ts",
