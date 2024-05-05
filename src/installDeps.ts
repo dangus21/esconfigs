@@ -64,8 +64,6 @@ function installDeps(manager: NonNullable<PackageManager>, config: ConfigOption[
 	} else {
 		currDirPackageManager = manager;
 	}
-	console.log('LOG ~ currDirPackageManager:', currDirPackageManager);
-
 	const packages = String(
 		[
 			...(config.includes("prettier")
@@ -78,11 +76,11 @@ function installDeps(manager: NonNullable<PackageManager>, config: ConfigOption[
 		].join(" "),
 	);
 
-	// spawnSync(
-	// 	currDirPackageManager,
-	// 	[currDirPackageManager === "yarn" ? "add" : "install", packages],
-	// 	spawnOptions,
-	// );
+	spawnSync(
+		currDirPackageManager,
+		[currDirPackageManager === "yarn" ? "add" : "install", packages],
+		spawnOptions,
+	);
 }
 
 export { installDeps };

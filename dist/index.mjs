@@ -81,13 +81,17 @@ function installDeps(manager, config, withTailwind = false) {
   } else {
     currDirPackageManager = manager;
   }
-  console.log("LOG ~ currDirPackageManager:", currDirPackageManager);
   const packages = String(
     [
       ...config.includes("prettier") ? withTailwind ? ["prettier", "prettier-plugin-tailwindcss"] : ["prettier"] : [],
       ...config.includes("eslint") ? eslintDeps : [],
       ...config.includes("biomejs") ? ["@biomejs/biome@latest"] : []
     ].join(" ")
+  );
+  spawnSync(
+    currDirPackageManager,
+    [currDirPackageManager === "yarn" ? "add" : "install", packages],
+    spawnOptions
   );
 }
 
