@@ -1,4 +1,5 @@
 const biome = `{
+	{
 	"$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
 	"organizeImports": {
 		"enabled": true
@@ -12,10 +13,6 @@ const biome = `{
 				"useFragmentSyntax": "error",
 				"useTemplate": "error",
 				"noUselessElse": "error"
-			},
-			"nursery": {
-				"noUnusedImports": "error",
-				"useAwait": "error"
 			},
 			"correctness": {
 				"noUnusedVariables": "error",
