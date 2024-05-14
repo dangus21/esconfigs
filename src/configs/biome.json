@@ -13,10 +13,6 @@
 				"useTemplate": "error",
 				"noUselessElse": "error"
 			},
-			"nursery": {
-				"noUnusedImports": "error",
-				"useAwait": "error"
-			},
 			"correctness": {
 				"noUnusedVariables": "error",
 				"useExhaustiveDependencies": "error"
