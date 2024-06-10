@@ -1,5 +1,4 @@
 const biome = `{
-	{
 	"$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
 	"organizeImports": {
 		"enabled": true
@@ -48,7 +47,6 @@ const biome = `{
 			"arrowParentheses": "always",
 			"jsxQuoteStyle": "double",
 			"semicolons": "always",
-			"trailingComma": "all",
 			"quoteProperties": "asNeeded",
 			"bracketSpacing": true,
 			"bracketSameLine": false,
