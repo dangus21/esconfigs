@@ -1,6 +1,6 @@
 {
 	"name": "esconfigs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Generate linting configs for js",
 	"bugs": {
 		"url": "https://github.com/dangus21/esconfigs/issues"
@@ -20,13 +20,12 @@
 		"lint": "eslint --fix src",
 		"pretty": "prettier src --write",
 		"format": "pnpm pretty && pnpm lint",
-		"test_build": "node ./dist/index.js",
 		"build": "rimraf dist && tsup",
 		"pub": "pnpm publish --access public && git push -f",
 		"pp": "pnpm version patch --force && pnpm publish --access public && git push -f",
 		"pm": "pnpm version minor --force && pnpm publish --access public && git push -f",
 		"pmm": "pnpm version major --force && pnpm publish --access public && git push -f",
-		"test": "tsx ./src/index.ts"
+		"test": "rimraf ./dist && pnpm build && tsx ./src/index.ts"
 	},
 	"keywords": [
 		"lint",
