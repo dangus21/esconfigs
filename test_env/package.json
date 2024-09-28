@@ -3,7 +3,9 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"test": "esconfigs"
+		"delete_test_files": "rimraf node_modules pnpm-lock.yaml .eslintrc.js .prettierrc .editorConfig biome.json",
+		"generate_test_files": "tsx ./setupenv",
+		"test": "pnpm delete_test_files && pnpm install && pnpm generate_test_files &&  esconfigs"
 	},
 	"dependencies": {
 		"@angusmiguel/esconfigs": "link:D:/Coding/esconfigs",
@@ -25,6 +27,7 @@
 		"prettier": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.8",
 		"react": "^18.3.1",
+		"tsx": "^4.19.1",
 		"typescript": "^5.6.2"
 	},
 	"author": "",

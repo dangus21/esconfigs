@@ -1,6 +1,6 @@
 {
-	"name": "@angusmiguel/esconfigs",
-	"version": "8.2.1",
+	"name": "esconfigs",
+	"version": "1.0.0",
 	"description": "Generate linting configs for js",
 	"bugs": {
 		"url": "https://github.com/dangus21/esconfigs/issues"
@@ -26,9 +26,7 @@
 		"pp": "pnpm version patch --force && pnpm publish --access public && git push -f",
 		"pm": "pnpm version minor --force && pnpm publish --access public && git push -f",
 		"pmm": "pnpm version major --force && pnpm publish --access public && git push -f",
-		"test": "tsx ./src/index.ts",
-		"del_test": "rimraf test_env/node_modules test_env/pnpm-lock.yaml test_env/.eslintrc.js test_env/.prettierrc test_env/.editorConfig test_env/biome.json",
-		"del_curr": "rimraf ./"
+		"test": "tsx ./src/index.ts"
 	},
 	"keywords": [
 		"lint",

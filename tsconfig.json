@@ -13,7 +13,6 @@
 		"**/*.ts",
 	],
 	"exclude": [
-		"supabase",
 		"node_modules"
 	]
 }

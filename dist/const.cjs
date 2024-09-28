@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _chunkIZUX6EAVcjs = require('./chunk-IZUX6EAV.cjs');require('./chunk-T64JCD2Z.cjs');exports.PACKAGES = _chunkIZUX6EAVcjs.m; exports.currDirFiles = _chunkIZUX6EAVcjs.f; exports.cwd = _chunkIZUX6EAVcjs.e; exports.eslintDeps = _chunkIZUX6EAVcjs.k; exports.spawnOptions = _chunkIZUX6EAVcjs.l; exports.withNextJS = _chunkIZUX6EAVcjs.i; exports.withReact = _chunkIZUX6EAVcjs.g; exports.withTS = _chunkIZUX6EAVcjs.h; exports.withTailwind = _chunkIZUX6EAVcjs.j;
+//# sourceMappingURL=const.cjs.map
