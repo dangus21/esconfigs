@@ -1,2 +1,2 @@
-import{a,b,c,d}from"./chunk-HTMEQ6NK.js";import"./chunk-QLHNYV6K.js";export{a as buildDestinationFileName,d as copyConfig,c as detectReactInPackageJson,b as installDeps};
+import{a,b,c,d}from"./chunk-IWMPHY5V.js";import"./chunk-QLHNYV6K.js";export{a as buildDestinationFileName,d as copyConfig,c as detectReactInPackageJson,b as installDeps};
 //# sourceMappingURL=utils.js.map

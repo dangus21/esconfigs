@@ -5,9 +5,13 @@ import fs from "node:fs";
 const cwd = process.cwd();
 const currDirFiles = fs.readdirSync(cwd);
 const withReact = detectReactInPackageJson();
-const withTS = currDirFiles.some((file) => file.startsWith("tsconfig."));
 const withNextJS = currDirFiles.some((file) => file.startsWith("next."));
-const withTailwind = currDirFiles.some((file) => file.startsWith("tailwind."));
+const withTS = currDirFiles.some(
+	(file) => file.startsWith("tsconfig.") || file.endsWith(".ts")
+);
+const withTailwind = currDirFiles.some(
+	(file) => file.startsWith("tailwind.") || file.includes("tailwind")
+);
 
 const eslintDeps = [
 	"@typescript-eslint/eslint-plugin",
@@ -34,9 +38,9 @@ const spawnOptions = {
 } as child_process.SpawnSyncOptionsWithBufferEncoding;
 
 const PACKAGES = {
-	pnpm: "pnpm",
-	yarn: "yarn",
-	npm: "package-lock"
+	pnpm: "pnpm-lock.yaml",
+	yarn: "yarn.lock",
+	npm: "package-lock.json"
 };
 
 export {

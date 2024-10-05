@@ -1,2 +1,2 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _chunkIZUX6EAVcjs = require('./chunk-IZUX6EAV.cjs');require('./chunk-T64JCD2Z.cjs');exports.buildDestinationFileName = _chunkIZUX6EAVcjs.a; exports.copyConfig = _chunkIZUX6EAVcjs.d; exports.detectReactInPackageJson = _chunkIZUX6EAVcjs.c; exports.installDeps = _chunkIZUX6EAVcjs.b;
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _chunkGJWP2IDXcjs = require('./chunk-GJWP2IDX.cjs');require('./chunk-T64JCD2Z.cjs');exports.buildDestinationFileName = _chunkGJWP2IDXcjs.a; exports.copyConfig = _chunkGJWP2IDXcjs.d; exports.detectReactInPackageJson = _chunkGJWP2IDXcjs.c; exports.installDeps = _chunkGJWP2IDXcjs.b;
 //# sourceMappingURL=utils.cjs.map

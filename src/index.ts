@@ -8,7 +8,8 @@ import { withNextJS, withTailwind } from "./const";
 	const { configType }: { configType: ConfigOption[] } = await prompt({
 		type: "multiselect",
 		name: "configType",
-		message: "What configs do you want to copy over?",
+		message:
+			"Select the configuration files you want to generate (use space to select, enter to confirm):",
 		choices: [
 			{ title: "ESlint", value: "eslint" },
 			{ title: "Prettier", value: "prettier" },

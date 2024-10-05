@@ -1,6 +1,6 @@
 import { ConfigOption, PackageManager } from './types.js';
 
-declare function buildDestinationFileName(configName: ConfigOption): [string, string];
+declare function buildDestinationFileAndFileName(configName: ConfigOption): [string, string];
 declare function installDeps({ config, manager, withNextJS, withTailwind }: {
     manager: NonNullable<PackageManager>;
     config: ConfigOption[];
@@ -10,4 +10,4 @@ declare function installDeps({ config, manager, withNextJS, withTailwind }: {
 declare function detectReactInPackageJson(): boolean;
 declare function copyConfig(configName: ConfigOption): void;
 
-export { buildDestinationFileName, copyConfig, detectReactInPackageJson, installDeps };
+export { buildDestinationFileAndFileName as buildDestinationFileName, copyConfig, detectReactInPackageJson, installDeps };

@@ -2,6 +2,7 @@ import * as configs from "./configs";
 import {
 	PACKAGES,
 	currDirFiles,
+	cwd,
 	spawnOptions,
 	withNextJS,
 	withReact,
@@ -25,7 +26,9 @@ function prettyObject(obj: Record<string, unknown> | string) {
 	return JSON.stringify(obj, null, 2);
 }
 
-function buildDestinationFileName(configName: ConfigOption): [string, string] {
+function buildDestinationFileAndFileName(
+	configName: ConfigOption
+): [string, string] {
 	if (configName === "eslint") {
 		if (withTS) {
 			configs.eslint.extends.push(
@@ -87,52 +90,34 @@ function buildDestinationFileName(configName: ConfigOption): [string, string] {
 	}
 }
 
-function installDeps({
-	config,
-	manager,
-	withNextJS = false,
-	withTailwind = false
-}: {
-	manager: NonNullable<PackageManager>;
-	config: ConfigOption[];
-	withNextJS: boolean;
-	withTailwind: boolean;
-}) {
-	let currDirPackageManager = manager;
+function detectCurrentPackageManager(): PackageManager {
+	if (existsSync(join(cwd, PACKAGES.pnpm))) return "pnpm";
+	if (existsSync(join(cwd, PACKAGES.yarn))) return "yarn";
+	if (existsSync(join(cwd, PACKAGES.npm))) return "npm";
+	return "npm"; // Default to npm if no lock file is found
+}
 
+function detectPackageManager(manager: PackageManager): PackageManager {
 	if (
 		currDirFiles.length === 0 ||
 		(currDirFiles.length > 0 && !currDirFiles.includes("package.json"))
 	) {
-		currDirPackageManager = "npm";
-		child_process.spawnSync(
-			currDirPackageManager,
-			["init", "-y"],
-			spawnOptions
-		);
+		child_process.spawnSync("npm", ["init", "-y"], spawnOptions);
 	}
 
 	if (manager === "current") {
-		for (const file of currDirFiles) {
-			switch (true) {
-				case file.startsWith(PACKAGES.pnpm):
-					currDirPackageManager = "pnpm";
-					break;
-				case file.startsWith(PACKAGES.yarn):
-					currDirPackageManager = "yarn";
-					break;
-				case file.startsWith(PACKAGES.npm):
-					currDirPackageManager = "npm";
-					break;
-				default:
-					currDirPackageManager = "pnpm";
-					break;
-			}
-		}
-	} else {
-		currDirPackageManager = manager;
+		return detectCurrentPackageManager();
 	}
-	const packages = String(
+
+	return manager;
+}
+
+function buildPackageList(
+	config: ConfigOption[],
+	withNextJS: boolean,
+	withTailwind: boolean
+): string {
+	return String(
 		[
 			...(config.includes("prettier")
 				? withTailwind
@@ -144,6 +129,21 @@ function installDeps({
 			...(config.includes("biomejs") ? ["@biomejs/biome@latest"] : [])
 		].join(" ")
 	);
+}
+
+function installDeps({
+	config,
+	manager,
+	withNextJS = false,
+	withTailwind = false
+}: {
+	manager: NonNullable<PackageManager>;
+	config: ConfigOption[];
+	withNextJS: boolean;
+	withTailwind: boolean;
+}) {
+	const currDirPackageManager = detectPackageManager(manager);
+	const packages = buildPackageList(config, withNextJS, withTailwind);
 
 	child_process.spawnSync(
 		currDirPackageManager,
@@ -175,9 +175,17 @@ export function detectReactInPackageJson(): boolean {
 }
 
 function copyConfig(configName: ConfigOption) {
-	const [fileName, ogFile] = buildDestinationFileName(configName);
-
-	writeFileSync(resolve(process.cwd(), fileName), ogFile);
+	try {
+		const [fileName, ogFile] = buildDestinationFileAndFileName(configName);
+		writeFileSync(resolve(process.cwd(), fileName), ogFile);
+		console.log(`Successfully created ${fileName}`);
+	} catch (error) {
+		console.error(`Error creating ${configName} config:`, error);
+	}
 }
 
-export { buildDestinationFileName, installDeps, copyConfig };
+export {
+	buildDestinationFileAndFileName as buildDestinationFileName,
+	installDeps,
+	copyConfig
+};
