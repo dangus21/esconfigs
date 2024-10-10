@@ -58,6 +58,7 @@ declare const eslint: {
     extends: any[];
     plugins: string[];
     rules: {
+        "arrow-body-style": string[];
         "sort-imports-es6-autofix/sort-imports-es6": (number | {
             ignoreCase: boolean;
             ignoreMemberSort: boolean;

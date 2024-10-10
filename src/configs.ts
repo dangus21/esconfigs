@@ -59,6 +59,7 @@ const eslint = {
 	extends: [],
 	plugins: ["import", "unused-imports", "sort-imports-es6-autofix"],
 	rules: {
+		"arrow-body-style": ["error", "as-needed"],
 		"sort-imports-es6-autofix/sort-imports-es6": [
 			2,
 			{
