@@ -187,5 +187,8 @@ function copyConfig(configName: ConfigOption) {
 export {
 	buildDestinationFileAndFileName as buildDestinationFileName,
 	installDeps,
-	copyConfig
+	copyConfig,
+	detectCurrentPackageManager,
+	detectPackageManager,
+	buildPackageList
 };
