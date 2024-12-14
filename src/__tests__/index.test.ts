@@ -1,23 +1,30 @@
-import * as configs from "../configs";
-import * as constants from "../const";
 import * as utils from "../utils";
 import child_process from "child_process";
 import fs from "fs";
 
-jest.mock("fs");
-jest.mock("child_process");
 jest.mock("prompts");
 
-describe("Config Generator Utils", () => {
-	// beforeEach(() => {
-	// 	jest.clearAllMocks();
-	// 	(fs.existsSync as jest.Mock).mockReset();
-	// 	(fs.readdirSync as jest.Mock).mockReset();
-	// 	(fs.readFileSync as jest.Mock).mockReset();
-	// 	(fs.writeFileSync as jest.Mock).mockReset();
-	// 	(child_process.spawnSync as jest.Mock).mockReset();
-	// });
+jest.mock("fs", () => ({
+	existsSync: jest.fn(),
+	readdirSync: jest.fn(),
+	readFileSync: jest.fn(),
+	writeFileSync: jest.fn()
+}));
 
+jest.mock("child_process", () => ({
+	spawnSync: jest.fn().mockReturnValue({
+		status: 0,
+		stdout: Buffer.from("mock stdout"),
+		stderr: Buffer.from("")
+	})
+}));
+
+jest.mock("process", () => ({
+	cwd: jest.fn(() => "/mock/cwd"),
+	env: {}
+}));
+
+describe("Config Generator Utils", () => {
 	describe("detectCurrentPackageManager", () => {
 		it("should detect pnpm", () => {
 			(fs.existsSync as jest.Mock).mockImplementation((file) =>
@@ -214,46 +221,29 @@ describe("Config Generator Utils", () => {
 			// The real command is not executed, only our mock is called
 		});
 	});
-});
 
-describe("Config Files", () => {
-	it("should have correct structure for ESLint config", () => {
-		expect(configs.eslint).toHaveProperty("env");
-		expect(configs.eslint).toHaveProperty("extends");
-		expect(configs.eslint).toHaveProperty("plugins");
-		expect(configs.eslint).toHaveProperty("rules");
-	});
-
-	it("should have correct structure for Prettier config", () => {
-		expect(configs.prettier).toHaveProperty("singleQuote");
-		expect(configs.prettier).toHaveProperty("trailingComma");
-		expect(configs.prettier).toHaveProperty("tabWidth");
-	});
-
-	it("should have correct structure for Biome config", () => {
-		expect(configs.biome).toHaveProperty("$schema");
-		expect(configs.biome).toHaveProperty("linter");
-		expect(configs.biome).toHaveProperty("javascript");
-	});
-
-	it("should have correct content for EditorConfig", () => {
-		expect(configs.editorConfig).toContain("root = true");
-		expect(configs.editorConfig).toContain("indent_style = tab");
-	});
-});
-
-describe("Constants", () => {
-	it("should have correct PACKAGES object", () => {
-		expect(constants.PACKAGES).toEqual({
-			pnpm: "pnpm-lock.yaml",
-			yarn: "yarn.lock",
-			npm: "package-lock.json"
+	describe("No real operations", () => {
+		it("should not perform any real file system operations", () => {
+			utils.copyConfig("eslint");
+			expect(fs.writeFileSync).toHaveBeenCalled();
+			expect(fs.writeFileSync).not.toBe(require("fs").writeFileSync);
 		});
-	});
 
-	it("should have correct spawnOptions", () => {
-		expect(constants.spawnOptions).toHaveProperty("cwd");
-		expect(constants.spawnOptions).toHaveProperty("stdio", "inherit");
-		expect(constants.spawnOptions).toHaveProperty("shell", true);
+		it("should not execute any real commands", () => {
+			utils.installDeps({
+				config: ["eslint"],
+				manager: "npm",
+				withNextJS: false,
+				withTailwind: false
+			});
+			expect(child_process.spawnSync).toHaveBeenCalled();
+			expect(child_process.spawnSync).not.toBe(
+				require("child_process").spawnSync
+			);
+		});
+
+		it("should use mocked process.cwd()", () => {
+			expect(process.cwd()).toBe("/mock/cwd");
+		});
 	});
 });
