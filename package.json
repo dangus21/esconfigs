@@ -1,6 +1,6 @@
 {
 	"name": "esconfigs",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "Generate linting configs for js",
 	"bugs": {
 		"url": "https://github.com/dangus21/esconfigs/issues"

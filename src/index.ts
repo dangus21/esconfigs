@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import prompt from "prompts";
 
 import { ConfigOption, PackageManager } from "./types";
