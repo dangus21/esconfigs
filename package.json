@@ -1,6 +1,6 @@
 {
 	"name": "esconfigs",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Generate linting configs for js",
 	"bugs": {
 		"url": "https://github.com/dangus21/esconfigs/issues"
@@ -42,6 +42,9 @@
 	],
 	"author": "",
 	"license": "ISC",
+	"dependencies": {
+		"prompts": "^2.4.2"
+	},
 	"devDependencies": {
 		"@types/jest": "^29.5.14",
 		"@types/node": "^22.10.2",
@@ -61,7 +64,6 @@
 		"jest": "^29.7.0",
 		"prettier": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.8",
-		"prompts": "^2.4.2",
 		"react": "^18.3.1",
 		"rimraf": "^6.0.1",
 		"ts-jest": "^29.2.5",
