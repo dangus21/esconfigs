@@ -1,2 +1,2 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _chunkVNSXTPYPcjs = require('./chunk-VNSXTPYP.cjs');exports.biome = _chunkVNSXTPYPcjs.a; exports.editorConfig = _chunkVNSXTPYPcjs.d; exports.eslint = _chunkVNSXTPYPcjs.b; exports.prettier = _chunkVNSXTPYPcjs.c;
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _chunk2AY3R7TXcjs = require('./chunk-2AY3R7TX.cjs');exports.biome = _chunk2AY3R7TXcjs.b; exports.editorConfig = _chunk2AY3R7TXcjs.e; exports.eslint = _chunk2AY3R7TXcjs.c; exports.prettier = _chunk2AY3R7TXcjs.d;
 //# sourceMappingURL=configs.cjs.map

@@ -1,2 +1,2 @@
-import{a,b,c,d}from"./chunk-FYZQJM4S.js";import"./chunk-7AG6F35Z.js";export{a as buildDestinationFileName,d as copyConfig,c as detectReactInPackageJson,b as installDeps};
+import{a,b,c,d,e,f,g}from"./chunk-DIH4S3C5.js";import"./chunk-VWFZ7S4G.js";export{a as buildDestinationFileName,d as buildPackageList,g as copyConfig,b as detectCurrentPackageManager,c as detectPackageManager,f as detectReactInPackageJson,e as installDeps};
 //# sourceMappingURL=utils.js.map

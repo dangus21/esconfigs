@@ -1,0 +1,2 @@
+import{o as t,p as o}from"../chunk-DIH4S3C5.js";import"../chunk-VWFZ7S4G.js";describe("Constants",()=>{it("should have correct PACKAGES object",()=>{expect(o).toEqual({pnpm:"pnpm-lock.yaml",yarn:"yarn.lock",npm:"package-lock.json"})}),it("should have correct spawnOptions",()=>{expect(t).toHaveProperty("cwd"),expect(t).toHaveProperty("stdio","inherit"),expect(t).toHaveProperty("shell",!0)})});
+//# sourceMappingURL=constants.test.js.map

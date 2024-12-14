@@ -1,0 +1,2 @@
+"use strict";var _chunkCGB5W7N6cjs = require('../chunk-CGB5W7N6.cjs');require('../chunk-2AY3R7TX.cjs');describe("Constants",()=>{it("should have correct PACKAGES object",()=>{expect(_chunkCGB5W7N6cjs.p).toEqual({pnpm:"pnpm-lock.yaml",yarn:"yarn.lock",npm:"package-lock.json"})}),it("should have correct spawnOptions",()=>{expect(_chunkCGB5W7N6cjs.o).toHaveProperty("cwd"),expect(_chunkCGB5W7N6cjs.o).toHaveProperty("stdio","inherit"),expect(_chunkCGB5W7N6cjs.o).toHaveProperty("shell",!0)})});
+//# sourceMappingURL=constants.test.cjs.map
