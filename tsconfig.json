@@ -1,10 +1,10 @@
 {
 	"compilerOptions": {
 		"target": "es6",
-		"module": "commonjs",
+		"module": "ES2022",
 		"strict": false,
 		"esModuleInterop": true,
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"outDir": "./dist",
 		"noImplicitAny": false,
 		"resolveJsonModule": true,
@@ -12,13 +12,17 @@
 			"jest",
 			"node"
 		],
-		"isolatedModules": true
+		"isolatedModules": true,
+		"allowImportingTsExtensions": true,
+		"emitDeclarationOnly": true,
+		"declaration": true
 	},
 	"include": [
 		"**/*.ts",
 		"src/**/*",
 		"**/*.test.ts",
-		"**/*.spec.ts"
+		"**/*.spec.ts",
+		"eslint.config.cjs"
 	],
 	"exclude": [
 		"node_modules"

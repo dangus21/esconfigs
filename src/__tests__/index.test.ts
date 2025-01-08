@@ -226,7 +226,7 @@ describe("Config Generator Utils", () => {
 		it("should not perform any real file system operations", () => {
 			utils.copyConfig("eslint");
 			expect(fs.writeFileSync).toHaveBeenCalled();
-			expect(fs.writeFileSync).not.toBe(require("fs").writeFileSync);
+			expect(fs.writeFileSync).not.toBe(fs.writeFileSync);
 		});
 
 		it("should not execute any real commands", () => {
@@ -237,9 +237,7 @@ describe("Config Generator Utils", () => {
 				withTailwind: false
 			});
 			expect(child_process.spawnSync).toHaveBeenCalled();
-			expect(child_process.spawnSync).not.toBe(
-				require("child_process").spawnSync
-			);
+			expect(child_process.spawnSync).not.toBe(child_process.spawnSync);
 		});
 
 		it("should use mocked process.cwd()", () => {
