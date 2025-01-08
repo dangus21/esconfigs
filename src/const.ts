@@ -18,7 +18,6 @@ const eslintDeps = [
 	"@typescript-eslint/parser",
 	"eslint-import-resolver-typescript",
 	"eslint-plugin-babel",
-	"eslint-plugin-html",
 	"eslint-plugin-import",
 	"eslint-plugin-prettier",
 	"eslint-plugin-react-hooks",
