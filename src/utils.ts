@@ -4,9 +4,9 @@ import {
 	currDirFiles,
 	cwd,
 	spawnOptions,
-	withNextJS,
+	/* withNextJS,
 	withReact,
-	withTS,
+	withTS, */
 	withTailwind
 } from "./const";
 import child_process from "node:child_process";
@@ -30,7 +30,7 @@ function buildDestinationFileAndFileName(
 	configName: ConfigOption
 ): [string, string] {
 	if (configName === "eslint") {
-		if (withTS) {
+		/* if (withTS) {
 			configs.eslint.extends.push(
 				"plugin:@typescript-eslint/recommended"
 			);
@@ -67,7 +67,7 @@ function buildDestinationFileAndFileName(
 		}
 		if (withNextJS) {
 			configs.eslint.extends.push("plugin:@next/next/recommended");
-		}
+		} */
 		return [
 			"eslint.config.mjs",
 			configs.eslintv9
