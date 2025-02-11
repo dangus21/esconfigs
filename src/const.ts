@@ -25,7 +25,7 @@ const eslintDeps = [
 	"eslint-plugin-sort-imports-es6-autofix",
 	"eslint-plugin-unused-imports",
 	"eslint-plugin-react-hooks",
-	"eslint@8.57.1"
+	"eslint^9"
 ];
 
 const spawnOptions = {

@@ -72,7 +72,7 @@ const eslint = {
 	settings: {}
 };
 
-const eslint9 = `
+const eslintv9 = `
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
 import path from "node:path";
@@ -199,4 +199,4 @@ insert_final_newline = true
 trim_trailing_whitespace = false
 `;
 
-export { biome, eslint, prettier, editorConfig };
+export { biome, eslint, prettier, editorConfig, eslintv9 };

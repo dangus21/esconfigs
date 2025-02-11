@@ -69,8 +69,9 @@ function buildDestinationFileAndFileName(
 			configs.eslint.extends.push("plugin:@next/next/recommended");
 		}
 		return [
-			".eslintrc.js",
-			`module.exports = ${prettyObject(configs.eslint)}`
+			"eslint.config.mjs",
+			configs.eslintv9
+			// `module.exports = ${prettyObject(configs.eslintv9)}`
 		];
 	}
 
